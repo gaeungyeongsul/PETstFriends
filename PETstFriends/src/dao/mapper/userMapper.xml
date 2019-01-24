@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dao.UserDao">
+
+	<select id="selectUserbyNn" parameterType="String"
+		resultType="user">
+		select * from User where user_nickname = #{user_nickname};
+	</select>
+
+<select id="selectUserbyId2" parameterType="java.util.HashMap" resultType="user">
+		select * from user where user_id like #{user_id};
+	</select>
+
+	<select id="selectUserbyId" parameterType="String"
+		resultType="user">
+		select * from User where user_id = #{user_id};
+	</select>
+
+	<!-- string이 맞나 -->
+	<select id="selectUserFindId" parameterType="java.util.HashMap"
+		resultType="String">
+		select user_id from user where user_name=#{user_name} and
+		user_email=#{user_email}
+	</select>
+
+	<select id="selectUserFindPw" parameterType="java.util.HashMap"
+		resultType="user">
+		select * from user where user_id=#{user_id} and
+		user_name=#{user_name} and
+		user_email=#{user_email}
+	</select>
+
+<!--   ★  변경된부분 insertPet★  -->
+   
+	<insert id="insertPet" parameterType="pet">  
+		insert into pet values(
+		0,#{user_id},#{pet_name},#{pet_species},
+		#{pet_gender},#{pet_age}
+		);
+	</insert>
+<!-- // -->
+
+	<insert id="insertUser" parameterType="user">
+		insert into user values(
+		0,#{user_name},#{user_id},#{user_nickname},#{user_pass},#{user_email},
+		#{user_phone},#{user_proPic},#{user_havePet}, #{user_score},#{user_joinDate},
+		#{user_adminCheck},#{user_state},#{user_pan_date}
+		);
+	</insert>
+
+
+	<select id="selectUserbyEmail" parameterType="String"
+		resultType="User">
+		select * from User where user_email = #{user_email}
+	</select>
+	<select id="selectUserbyName" parameterType="String"
+		resultType="User">
+		select * from User where user_name = #{user_name}
+	</select>
+
+	<update id="updateUser_pass" parameterType="java.util.HashMap">
+		update User set
+		user_pass=#{user_pass} where user_id=#{user_id}
+
+	</update>
+
+<delete id="deleteUser" parameterType="String">
+		delete from User where
+		user_id = #{user_id}
+
+	</delete>
+
+
+
+	<delete id="deletePet" parameterType="int">
+		delete from Pet where
+		pet_no = #{pet_no}
+
+	</delete>
+	
+		<delete id="deletePetAll" parameterType="String">
+		delete from Pet where
+		user_id = #{user_id}
+
+	</delete>
+
+	<update id="updateUser" parameterType="java.util.HashMap">
+		update User set
+		user_nickname = #{user_nickname}, user_pass =
+		#{user_pass} , user_email
+		= #{user_email} ,user_phone = #{user_phone},
+		user_havePet =
+		#{user_havePet} where user_id = #{user_id}
+
+	</update>
+	
+	<update id="updateUserState" parameterType="java.util.HashMap">
+		update User set
+		user_state=#{user_state}
+		 where user_no = #{user_no}
+
+	</update>
+
+	<update id="updatePet" parameterType="pet">
+		update Pet set pet_name =
+		#{pet_name}, pet_species =
+		#{pet_species},pet_gender = #{pet_gender},
+		pet_age =
+		#{pet_age}
+		where pet_no = #{pet_no}
+	</update>
+
+<!-- ★★★여기요★★★ -->
+<update id="updateScore" parameterType="user">
+		update user set user_score=#{user_score}
+		where user_id = #{user_id}
+	</update>
+	
+	<select id="selectUserPet" parameterType="String"
+		resultType="java.util.HashMap">
+		select * from User u , Pet p where u.user_id = p.user_id
+		and u.user_id
+		= #{user_id};
+	</select>
+	<select id="selectUserPw" parameterType="String"
+		resultType="String">
+		select user_pass from User where user_id = #{user_id}
+	</select>
+
+	<select id="selectOne" parameterType="String"
+		resultType="user">
+		select * from User where user_id = #{user_id}
+	</select>
+
+	<select id="selectPetAll" parameterType="String"
+		resultType="pet">
+		select * from pet where user_id = #{user_id}
+	</select>
+
+	<select id="selectmyWrite" parameterType="java.util.HashMap"
+		resultType="java.util.HashMap">
+		select FreeBoard_boardname AS "boardname",
+		FreeBoard_boardno AS "boardno",FreeBoard_title AS "title",
+		FreeBoard_userid AS "userId",
+		FreeBoard_writeDate AS "writeDate" from
+		FreeBoard where FreeBoard_userId = #{user_id}
+		UNION ALL
+		select
+		TipBoard_boardname AS "boardname", TipBoard_boardno AS
+		"boardno",TipBoard_title AS "title", TipBoard_userId AS "userId",
+		TipBoard_writeDate AS "writeDate" from
+		TipBoard where TipBoard_userId =
+		#{user_id}
+		UNION ALL
+		select boardname AS "boardname" , meeting_boardno
+		AS "boardno", meetingBoard_title AS "title" , meetingBoard_userId AS
+		"userId",
+		meetingBoard_writeDate AS "writeDate" from MeetingBoard where
+		meetingBoard_userId = #{user_id} limit #{skip},#{qty}
+	</select>
+
+<select id="selectmyLikes" parameterType="java.util.HashMap"
+      resultType="java.util.HashMap">
+      select fb.freeBoard_boardname AS "boardname",
+      fb.freeBoard_boardno AS "boardno",fb.freeBoard_title AS "title",
+      fb.freeBoard_userId AS "userId",
+      fb.freeBoard_writeDate AS "writeDate"
+      from FreeBoard fb , FreeLikes fl where
+      fb.freeBoard_boardno =
+      fl.freeLikes_boardno and fl.freeLikes_userId = #{user_id} and fl.freeLikes_likeCheck=1 
+      UNION
+      select
+      tb.tipBoard_boardname AS "boardname",
+      tb.tipBoard_boardno AS "boardno",
+      tb.tipBoard_title AS "title", tb.tipBoard_userId AS "userId",
+      tb.tipBoard_writeDate AS "writeDate" from TipBoard tb , TipLikes tl
+      where
+      tb.tipBoard_boardno= tl.tiplikes_boardno and tl.tiplikes_userId=
+      #{user_id} and tl.tipLikes_likeCheck=1
+      UNION
+      select mb.boardname AS "boardname", mb.meetingReview_no
+      AS "boardno", mb.meetingReview_title AS "title",
+      mb.meetingReview_userid
+      AS "userId",
+      mb.meetingReview_writeDate AS "writeDate" from meetingReview
+      mb ,
+      meetingLikes ml where
+      mb.meetingReview_no = ml.reviewno
+      and
+      ml.meetingLikes_userId= #{user_id} limit #{skip},#{qty}
+   </select>
+
+	<select id="selectMyMeetingApply"
+		parameterType="java.util.HashMap" resultType="java.util.HashMap">
+
+		select mb.boardname AS "boardname", mb.meeting_boardno AS
+		"boardno",mb.meetingBoard_title AS "title", mb.meetingBoard_userId AS
+		"userId",
+		mb.meetingBoard_writeDate AS "writeDate" from meetingBoard mb
+		, meetingBoardApply mba where
+		mb.meeting_boardno = mba.meeting_boardno
+		and mba.meetingBoardApply_userId = #{user_id} limit #{skip},#{qty}
+
+	</select>
+	<select id="getWriteCount" parameterType="String"
+		resultType="int">
+		select count(*) from (
+		select FreeBoard_boardno from
+		FreeBoard where
+		FreeBoard_userid = #{user_id}
+		UNION ALL
+		select
+		TipBoard_boardno from
+		TipBoard where TipBoard_userId= #{user_id}
+		UNION
+		ALL
+		select
+		meeting_boardno from MeetingBoard where MeetingBoard_userid =
+		#{user_id}
+		) cnt;
+	</select>
+
+  <select id="getLikesCount" parameterType="String"
+      resultType="int">
+      select count(*) from (
+      select fb.freeBoard_boardno from
+      FreeBoard fb, FreeLikes fl where
+      fb.freeBoard_boardno =
+      fl.freeLikes_boardno and fl.freeLikes_userId = #{user_id} and fl.freeLikes_likeCheck=1 
+      UNION
+      select
+      tb.tipBoard_boardno from TipBoard tb, TipLikes tl where
+      tb.tipBoard_boardno = tl.tiplikes_boardno and tl.tiplikes_userId =
+      #{user_id} and tl.tipLikes_likeCheck=1
+      UNION
+        select mb.meetingReview_no from meetingReview mb ,
+      meetingLikes ml where
+      mb.meetingReview_no = ml.reviewno and
+      ml.meetingLikes_userId= #{user_id}
+
+      ) cnt;
+   </select>
+
+	<select id="getMymeetingCount" parameterType="String"
+		resultType="int">
+		select count(*) from (select mb.meeting_boardno from meetingBoard mb ,
+		MeetingBoardApply ml where
+		mb.meeting_boardno = ml.meeting_boardno and
+		ml.meetingBoardApply_userId = #{user_id} ) cnt;
+
+	</select>
+
+
+	<select id="getCount" resultType="int" parameterType="java.util.HashMap">
+		select count(*) from user 
+		<if test="keyword!=null">
+		where user_id like '%${keyword}%'
+		</if>
+	</select>
+	<select id="selectUserAll" resultType="user" parameterType="java.util.HashMap">
+		select * from user 
+		<if test="keyword!=null">
+		where user_id like '%${keyword}%'
+		</if>
+		order by user_no desc limit #{skip},#{numb}
+	</select>
+	
+	<update id="updatePropic" parameterType="java.util.HashMap"> 
+		update User set
+		user_proPic=#{user_proPic} where user_id=#{user_id}
+
+	</update>
+	
+		<select id="selectUser" parameterType="String" resultType="java.util.HashMap">   <!--★ 9월7일자 추가된 부분★(소현) -->
+		select * from User where user_id = #{user_id}
+	</select>
+
+</mapper>

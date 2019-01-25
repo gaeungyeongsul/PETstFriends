@@ -710,7 +710,7 @@ input::-moz-placeholder {
 						<li><a style="cursor: pointer; color: brown; font-size: 15px;"
 						href="loginForm.do">로그인</a></li>
 						<li><a style="cursor: pointer; color: brown; font-size: 15px;"
-						href="joinUserForm.do">회원가입</a></li>
+						href="joinwith.do">회원가입</a></li>
 					</c:otherwise>
 				</c:choose>
 			</ul>

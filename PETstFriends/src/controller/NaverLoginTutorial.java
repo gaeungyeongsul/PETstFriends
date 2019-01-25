@@ -52,7 +52,6 @@ public class NaverLoginTutorial {
 	}
   
     
-	//추가하기 0912????
     @RequestMapping(value="/loginForm.do")
     public ModelAndView login(HttpSession session, @RequestParam(defaultValue="0") int state) {
     	ModelAndView mav = new ModelAndView();
@@ -65,10 +64,9 @@ public class NaverLoginTutorial {
         mav.setViewName("user/loginForm");
         /* 생성한 인증 URL을 View로 전달 */
         return mav;
-//        return new ModelAndView("user/loginForm", "url", naverAuthUrl);
     }
     
-  //추가하기 0912????
+
     @RequestMapping(value="/joinwith.do")
     public ModelAndView joinwith(HttpSession session, Model model) {
  
@@ -78,6 +76,7 @@ public class NaverLoginTutorial {
         /* 생성한 인증 URL을 View로 전달 */
         return new ModelAndView("user/joinwith", "url", naverAuthUrl);
     }
+    
     
     @RequestMapping("/callback.do")//네아로
 	public String callback(@RequestParam String code, @RequestParam String state, HttpSession session, Model model) 

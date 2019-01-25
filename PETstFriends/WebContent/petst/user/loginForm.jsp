@@ -109,31 +109,19 @@
 </style>
 <script type="text/javascript">
 $(document).ready(function() {
-	//0912 수정???===
 			if('${state}' == 1)
 				alert('영구정지 된 회원입니다.')
-				//여기까지 0912???
-
+				
 		// 쿠키값을 가져온다.
-
 		var cookie_user_id = getLogin();
-
-
-
 		/**
-
 		* 쿠키값이 존재하면 id에 쿠키에서 가져온 id를 할당한 뒤
-
 		* 체크박스를 체크상태로 변경
-
 		*/
 
 		if(cookie_user_id != "") {
-
 		$("#user_id").val(cookie_user_id);
-
 		$("#cb_saveId").attr("checked", true);
-
 		}
 
 
@@ -156,10 +144,7 @@ $(document).ready(function() {
 
 		});
 
-
-	
 		$('#loginBtn').click(function() {
-			// 0921수정?????????????
 					$.ajax({
 						type : "POST",
 						url : "login.do",
@@ -349,7 +334,6 @@ $(document).ready(function() {
 					</tr>
 					<tr height="20px;"></tr>
 					<tr>
-					
 						<td width="150px" style="text-align: left;">아직 회원이 아니라면?</td>
 						<td align="right">
 						<a href="joinwith.do"> <img src="img/PFJoin1.png"

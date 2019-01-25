@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>회원가입1</title>
+<title>회원가입</title>
 
 <link rel="stylesheet" type="text/css"
 	href="https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css">
@@ -52,7 +52,7 @@
 					</div>
 					<div class="article">
 						<div class="row-group">
-							<table>
+							<table bordercolor="white">
 								<tr>
 
 									<td align="right"><a href="terms_use.do"> <img
@@ -62,10 +62,9 @@
 									<td align="right"><a href="${url}"> <img
 											src="img/naverjoin1.png" style="height: 50px;">
 									</a></td>
-								<tr></tr>
+							</tr>
 							</table>
 
-							
 						</div>
 					</div>
 				</div>

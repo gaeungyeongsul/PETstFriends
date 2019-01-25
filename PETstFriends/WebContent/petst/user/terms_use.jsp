@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>약관 동의1</title>
+<title>약관 동의</title>
 <link rel="stylesheet" type="text/css"
 	href="https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css">
 <link rel="stylesheet" href="./Boot/css/bootstrap.min.css">
@@ -32,7 +32,6 @@ function chk(){
 }
 function nochk(){
  alert("동의하지 않으면 가입하실 수 없습니다");
-location.href="login.do";
 }
 </script>
 <style type="text/css">

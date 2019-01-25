@@ -55,7 +55,6 @@ public class UserController {
 		return result;
 	}
 	
-	//0912수정??????
 		@RequestMapping(value = "/login.do", method = RequestMethod.POST)
 		@ResponseBody
 		public int login(String user_id, String user_pass,HttpSession session) {
@@ -74,6 +73,7 @@ public class UserController {
 				return 2;
 			}
 		}
+		
 	@RequestMapping("/terms_use.do") // 회원 동의약관-회원가입클릭시 바로 여기로
 	public String termsUse(HttpServletRequest request, HttpSession session, Model model) {
 		if (session.getAttribute("naverUser") != null) {
@@ -88,7 +88,6 @@ public class UserController {
 		return "user/joinUserForm";
 	}
 
-	// 회원가입 수정함??????
 	@RequestMapping(value = "/joinUser.do", method = RequestMethod.POST)
 	@ResponseBody
 	public void join(MultipartHttpServletRequest multi, HttpServletResponse resp, HttpSession session) {
@@ -96,7 +95,8 @@ public class UserController {
 		userService.joinUser(multi);
 		session.setAttribute("id", multi.getParameter("user_id"));
 	}
-	//회원가입 펫 수정함??????
+	
+	
 	@RequestMapping(value = "/joinUserPet.do", method = RequestMethod.POST)
 	@ResponseBody
 	public void joinPet(@RequestParam HashMap<String, Object> params, HttpServletResponse resp, HttpSession session) {

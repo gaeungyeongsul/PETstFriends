@@ -21,18 +21,12 @@ public class OftenQnAController {
 	@Autowired
 	OftenQnAService oqService;
 	
-	
-	
 	@RequestMapping("showOftenQnAList.do")
 	public String showOftenQnAList(Model model) {
 		model.addAttribute("oqList", oqService.showOftenList());
 		return "qna/customerCenter_Q";
 	}
-//	@RequestMapping("showOftenQnA.do")
-//	public String showOftenQnABoard(@RequestParam int oftenQnA_boardno, Model model) {
-//		model.addAttribute("oftenQnA", oqService.showOftenQnABoard(oftenQnA_boardno));
-//		return "qna/customerCenter_QBoard";
-//	}
+
 	@RequestMapping("modifyOftenQnAForm.do")
 	public String modifyOftenQnABoardForm(@RequestParam int oftenQnA_boardno, Model model) {
 		model.addAttribute("oftenQnA", oqService.showOftenQnABoard(oftenQnA_boardno));
@@ -50,7 +44,7 @@ public class OftenQnAController {
 	@RequestMapping("writeOftenQnAForm.do")
 	public String writeOftenQnABoardForm() {
 		return "qna/customerCenter_writeQForm";
-	}
+	} 
 	@RequestMapping(value="writeOftenQnA.do", method = RequestMethod.POST)
 	public String writeOftenQnABoard(@RequestParam String oftenQnA_title,
 			@RequestParam String editor,
@@ -62,7 +56,7 @@ public class OftenQnAController {
 		oqService.writeOftenBoard(oftenQnA);
 		model.addAttribute("oftenQnA_boardno", oftenQnA.getOftenQnA_boardno());
 		return "redirect:showOftenQnAList.do";
-	}
+	} 
 	@RequestMapping("deleteOftenQnA.do")
 	public String deleteOftenQnABoard(@RequestParam int oftenQnA_boardno) {
 		System.out.println("옴");

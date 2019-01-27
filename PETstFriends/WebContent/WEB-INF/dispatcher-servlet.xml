@@ -15,6 +15,25 @@
 		<property value=".jsp" name="suffix" />
 	</bean>
 	<mvc:annotation-driven/>
+	
+	<mvc:interceptors>
+	<mvc:interceptor>
+	<mvc:mapping path="/writeNoticeBoardForm.do" />
+	<mvc:mapping path="/writeNoticeBoard.do" />
+	<mvc:mapping path="/deleteNoticeBoard.do" />
+	<mvc:mapping path="/modifyNoticeBoardForm.do" />
+	<mvc:mapping path="/modifyNoticeBoard.do" />
+	<mvc:mapping path="/sendMsg.do" />
+	<mvc:mapping path="/modifyOftenQnAForm.do" />
+	<mvc:mapping path="/modifyOftenQnA.do" />
+	<mvc:mapping path="/writeOftenQnAForm.do" />
+	<mvc:mapping path="/writeOftenQnA.do" />
+	<mvc:mapping path="/deleteOftenQnA.do" />
+	<mvc:mapping path="/writeQnAComment.do" />
+	<ref bean="adminInterceptor" />
+	</mvc:interceptor>
+	
+	</mvc:interceptors>
 
    <bean id="naverLoginBO" class="naver.NaverLoginBO" />
    <!-- NaverLoginBO Class에 대한 Bean설정 추가 -->

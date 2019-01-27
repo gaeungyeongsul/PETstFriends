@@ -99,11 +99,11 @@ public class PlaceReviewController {
 	
 	@RequestMapping(value="/checkPlace.do")
 	public String checkPlace(Model model, @RequestParam(defaultValue="0") int randomnum, 
-			@RequestParam(defaultValue="1") int randomnum2) {
+			@RequestParam(defaultValue="0") int randomnum2) {
 		//비오는날 : 카페, 호텔
 		//화창한날 : 공원,
 		//randomnum = 1 서울2 부산 3인천4 대구 5 대전 6 광주 7 울산 8 제주
-		//randomnum2 = 1:애견카페 2:애묘카페 3.호텔 4.공원 5:놀이터		
+		//randomnum2 =0:동물병원 1:애견카페 2:애묘카페 3.호텔 4.공원 5:놀이터		
 		//mainKey : 메인키워드, 지역  
 		//mainPlace : 장소 이름, mainPlace1 : jsp에서 사용할 장소 id값
 		String mainKey = randomnum==0?"종로구":randomnum==1?"서울":randomnum==2?"부산":randomnum==3?"인천":

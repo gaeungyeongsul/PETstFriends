@@ -104,7 +104,7 @@
 					<div style="border-bottom: 2px solid brown; width: 20%;">
 					<div style="border-bottom: 5px solid #FFD232; width: 70%;">
 					               <div style="border:1px solid white ;  height: 50px; ">
-               <h2 align="left"><font style="font-family: 'NanumSquareRound', sans-serif ;font-size:20px;"> <b>공지사항</b> </font></h2>
+               <h2 align="left"><font style="font-family: 'NanumSquareRound', sans-serif ;font-size:20px;"> <b>자주하는 질문</b> </font></h2>
 					</div>
 					</div>
 					</div>

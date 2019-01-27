@@ -65,7 +65,7 @@ public class UserController {
 				}else {
 					session.setAttribute("user_id",user_id);
 				if(userService.selectUser(user_id).getUser_adminCheck()==1) {
-					session.setAttribute("adminCheck", 1);
+					session.setAttribute("adminCheck", "1");
 				}
 				return 0;
 				}

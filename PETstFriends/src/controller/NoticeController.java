@@ -95,7 +95,7 @@ public class NoticeController {
 	public String deleteNoticeBoard(@RequestParam int notice_boardno) {
 		
 		nService.deleteNoticeBoard(notice_boardno);
-		return "redirect:showNoticeList.do";//에이작스??? 그냥???
+		return "redirect:showNoticeList.do";
 		
 	}
 	
@@ -117,11 +117,6 @@ public class NoticeController {
 		return "redirect:showNoticeBoard.do";
 	}
 	
-	@RequestMapping("aaaa.do")
-	public String aa()
-	{
-		return "notice/customerdd";
-	}
 	
 	//================================================
 

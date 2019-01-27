@@ -28,7 +28,7 @@ public class QnAController {
 	
 	@RequestMapping("qnA.do")
 	public String qnA(HttpSession session) {
-		//여기 바꿈????
+		
 		if(session.getAttribute("adminCheck")==null)
 			return "redirect:writeQnAForm.do";
 		else
@@ -40,7 +40,7 @@ public class QnAController {
 		return "qna/customerCenter_Ask";
 	}
 
-	//0912??수정????
+	
 	@RequestMapping(value="writeQnA.do", method=RequestMethod.POST)
 	@ResponseBody
 	public int writeQnABoard(@RequestParam HashMap<String, Object> params, HttpSession session, Model model) {
@@ -99,7 +99,7 @@ public class QnAController {
 		return "redirect:showQnAList.do";
 	}
 	
-	@RequestMapping("writeQnAComment")
+	@RequestMapping("writeQnAComment.do")
 	@ResponseBody
 	public int writeQnAComment(@RequestParam int qnA_boardno
 			,@RequestParam(required=false) String qnA_reply, HttpSession session) {

@@ -653,16 +653,16 @@ input::-moz-placeholder {
 <body>
     <header id="header">
 	<%
-		boolean a = false;//어드민 이면     ture
-		boolean b = false;//회원 이면 true
+		boolean adminYN = false;//어드민 이면     ture
+		boolean cusYN = false;//회원 이면 true
 		if (session.getAttribute("user_id") != null && session.getAttribute("adminCheck") != null) {//아이디가 있고 어드민 있으므로 어드민
-			a = true;
+			adminYN = true;
 		} else if (session.getAttribute("user_id") != null) {
-			b = true;
+			cusYN = true;
 		}
 		;
-		pageContext.setAttribute("a", a);
-		pageContext.setAttribute("b", b);
+		pageContext.setAttribute("adminYN", adminYN);
+		pageContext.setAttribute("cusYN", cusYN);
 	%>
 	
 	<div class="main-logo text-center" style="background-color: white">
@@ -672,11 +672,11 @@ input::-moz-placeholder {
 				<nav>
 				<ul>
 				<c:choose>
-					<c:when test="${a }">
+					<c:when test="${adminYN }">
 						<li><a style="cursor: pointer;color: brown; font-size: 15px;"
 						href="logout.do">로그아웃</a></li>
 					</c:when>
-					<c:when test="${b}">
+					<c:when test="${cusYN }">
 						<li><a style="cursor: pointer;color: brown; font-size: 15px;"
 						href="showNoticeList.do">고객센터</a></li>
 						<li><a style="cursor: pointer;color: brown; font-size: 15px;"
@@ -781,7 +781,7 @@ input::-moz-placeholder {
 									<li><a href="#"><span id="tmrSky"></span><i id="tmrSkyImage" class=""></i><br><span id="tmrMax"></span><br><span id="tmrMin"></span></a></li>
 									<li><a href="#"><span id="datSky"></span><i id="datSkyImage" class=""></i><br><span id="datMax"></span><br><span id="datMin"></span></a></li>
 								</ul></li>													
-							<c:if test="${a }">
+							<c:if test="${adminYN }">
 								<li class="menu-item-has-children"><a href="">관리자 메뉴<i
 										class="fa fa-angle-down"></i></a>
 									<ul class="sub-menu">

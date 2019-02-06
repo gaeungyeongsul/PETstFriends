@@ -338,19 +338,13 @@ public class UserController {
 			@RequestMapping(value = "/nicknameCheck.do") // 닉네임 중복검사
 			@ResponseBody
 			public boolean getUserbyNn(HttpServletRequest req, HttpServletResponse resp) {
-
 				resp.setContentType("text/html; charset=UTF-8");
 				String user_nickname = req.getParameter("user_nickname");
-
 				boolean result = userService.getUserbyNn(user_nickname);
-
-				user_nickname = req.getParameter("user_nickname");
-
 				return result;
-
 			}
 			
-			@RequestMapping(value = "/passCheck.do") // 비밀번호 일치 검사    9월7일 !꼭???
+			@RequestMapping(value = "/passCheck.do") // 비밀번호 일치 검사  
 			@ResponseBody
 			public boolean getUserPw(HttpServletRequest req, HttpServletResponse resp, HttpSession session) {
 				System.out.println("passCheck.do 들어옴");

@@ -184,6 +184,9 @@ public class FreeBoardController {
 			}		
 			
 			//-----------------------------------------------------------------------------------------
+			
+			
+			
 			//토끼자게
 			@RequestMapping(value= "rabbitFreeBoardList.do", method=RequestMethod.GET) 		
 			public ModelAndView RabbitFreeBoardList(Model model,@RequestParam(defaultValue = "1") int page,
@@ -261,7 +264,7 @@ public class FreeBoardController {
 
 				String user_idCheck = (String) session.getAttribute("user_id");
 				model.addAttribute("user_idCheck", user_idCheck);
-
+				
 				mav.addAllObjects(result);
 				mav.addAllObjects(params);
 				mav.setViewName("freeboard/etcFreeBoardList");

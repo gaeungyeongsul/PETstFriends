@@ -531,6 +531,7 @@ return result2;
 					  params.put("freeComments_commentno", freeComments_commentno);
 					  params.put("freeBoard_content", "");
 					  bDao.updateComments(params);//대댓있는경우 빈칸  
+					 
 				  }
 					
 				}else { //대댓

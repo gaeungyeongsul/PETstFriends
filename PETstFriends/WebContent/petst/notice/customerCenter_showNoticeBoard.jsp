@@ -63,7 +63,6 @@ $('#deleteBtn').click(function(){
 	else{
 	}
 })
-// onclick="location.href='deleteNoticeBoard.do?notice_boardno=${notice_boardno}'" 
 });
 </script>
 </head>
@@ -95,8 +94,8 @@ $('#deleteBtn').click(function(){
 					</div>
 					</div>
 					<br>
-					<div style="height: 350px; border: 1px solid white;">
-						<div style="display: inline-block; height: 300px; width: 750px; text-align: right; ">
+					<div style="border: 1px solid white;">
+						<div style="display: inline-block; width: 750px; text-align: right; ">
 			<table class="table" >
 				<tr align="center" style="font-family: 'monaco';" bgcolor="white">
 				<td></td>
@@ -107,9 +106,8 @@ $('#deleteBtn').click(function(){
 					<td style="width: 150px">조회수 : ${noticeBoard.notice_readCount }</td>
 				</tr> 
 				<tr>
-				<td></td>
-					<td align="left" colspan="5" style="width:700px; ">
-<!-- 					요기고치기??????????????? -->
+				<td style="height: 100%;"></td>
+					<td align="left" colspan="5" style="width:700px; height: 100%;">
 					<br><br>
 						${noticeBoard.notice_content } <br> <br> <br>
 						</td>

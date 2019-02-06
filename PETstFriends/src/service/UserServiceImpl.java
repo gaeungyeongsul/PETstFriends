@@ -135,7 +135,6 @@ public class UserServiceImpl implements UserService {
 				pet.setPet_gender(jOb.get("pet_gender").getAsInt());
 				pet.setPet_species(jOb.get("pet_species").getAsString());
 				pet.setPet_age(jOb.get("pet_age").getAsInt());
-				// 펫 테이블에 insertSerive부르기
 				udao.insertPet(pet);
 			}
 		}

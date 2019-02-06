@@ -104,7 +104,6 @@ a:hover {
 										href="showNoticeBoard.do?notice_boardno=${notice.notice_boardno }&page=${current}&type=${type }&keyword=${keyword }&numb=${numb }">
 											${notice.notice_title }</a></td>
 									<td>관리자</td>
-									<%-- 								${notice.notice_adminId } --%>
 									<td><c:set var="str1" value="${notice.notice_writeDate }" />
 										${fn:substringBefore(str1, '.0')}</td>
 									<td>${notice.notice_readCount }</td>
